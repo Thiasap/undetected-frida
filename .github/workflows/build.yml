@@ -146,6 +146,7 @@ jobs:
           ${compr%:*} -k "${_src}"
           gh_release_put "${_src}.${compr#*:}" "${GITHUB_REPOSITORY##*/}-${j}-${FRIDA_VERSION}-${{ matrix.os }}-${{ matrix.arch }}.${compr#*:}"
         done
+        cat subprojects/frida-core/src/anti-anti-frida.py
         python subprojects/frida-core/src/anti-anti-frida.py build/subprojects/frida-core/server/frida-server
         mv build/subprojects/frida-core/server/frida-server ../frida-server-${{ matrix.arch }}
 
